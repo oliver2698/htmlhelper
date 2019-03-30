@@ -1,0 +1,85 @@
+﻿@model  Ante_proyecto.Models.Formulario
+
+@{
+    ViewBag.Title = "Formulario";
+}
+
+<h2>Formulario</h2>
+
+@using (Html.BeginForm("FormSubmit", "Home", null, FormMethod.Post, new { id = "MyForm" }))
+{
+
+    @Html.ValidationSummary(true)
+
+    @Html.LabelFor(model => model.Cedula)
+    @:&nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.EditorFor(model => model.Cedula)
+    @Html.ValidationMessageFor(model => model.Cedula)
+    <br />
+
+    @Html.LabelFor(model => model.Nombre)
+    @:&nbsp;&nbsp;&nbsp;
+    @Html.EditorFor(model => model.Nombre)
+    @Html.ValidationMessageFor(model => model.Nombre)
+    <br />
+
+    @Html.LabelFor(model => model.Apellido)
+    @:&nbsp;&nbsp;
+    @Html.EditorFor(model => model.Apellido)
+    @Html.ValidationMessageFor(model => model.Apellido)
+    <br />
+
+    @Html.LabelFor(model => model.Edad)
+    @:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.EditorFor(model => model.Edad)
+    @Html.ValidationMessageFor(model => model.Edad)
+    <br />
+
+    @Html.LabelFor(model => model.Telefono)
+    @:&nbsp;&nbsp;
+    @Html.EditorFor(model => model.Telefono)
+    @Html.ValidationMessageFor(model => model.Telefono)
+    <br />
+
+    @Html.LabelFor(model => model.Correo)
+    @:&nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.EditorFor(model => model.Correo)
+    @Html.ValidationMessageFor(model => model.Correo)
+    <br />
+
+
+    @Html.LabelFor(model => model.Estado_civil)
+    <div>
+        Soltero: @Html.RadioButtonFor(m => m.Estado_civil, "Soltero")
+        Casado: @Html.RadioButtonFor(m => m.Estado_civil, "Casado")
+        Union Libre: @Html.RadioButtonFor(m => m.Estado_civil, "Union Libre")
+        Viudo: @Html.RadioButtonFor(m => m.Estado_civil, "Viudo")
+        @Html.ValidationMessageFor(model => model.Estado_civil)
+    </div>
+    <br />
+
+    @Html.LabelFor(model => model.Genero)
+    <div>
+        @Html.DropDownListFor(model => model.Genero,
+        new List<SelectListItem>
+                (){
+                new SelectListItem{Text ="Masculico" , Value="Masculico" },
+                new SelectListItem{Text ="Femenino"  , Value="Femenino" },
+                }, "seleccione genero") <br />
+    </div>
+
+    @Html.LabelFor(model => model.Hobby)
+    <div>
+
+        Tarea   @Html.CheckBoxFor(x => x.Hobby)
+
+    </div>
+    <input type="submit" value="Enviar" class="btn btn-default" />
+}
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
